@@ -6,15 +6,13 @@ import { TagInput } from './TagInput';
 describe('TagInput', () => {
   it('should render', () => {
     const onTagsUpdated = jest.fn();
-    render(<TagInput onTagsUpdated={onTagsUpdated} tags={[]} />);
+    render(<TagInput onTagsUpdated={onTagsUpdated} />);
 
     expect(onTagsUpdated).toHaveBeenCalledTimes(0);
   });
   it('should add a Tag', () => {
     const onTagsUpdated = jest.fn();
-    const { getByRole } = render(
-      <TagInput onTagsUpdated={onTagsUpdated} tags={[]} />
-    );
+    const { getByRole } = render(<TagInput onTagsUpdated={onTagsUpdated} />);
 
     const input = getByRole('textbox');
 
@@ -59,7 +57,7 @@ describe('TagInput', () => {
     const onTagsUpdated = jest.fn();
 
     const { getByRole } = render(
-      <TagInput onTagsUpdated={onTagsUpdated} tags={[]} disabled />
+      <TagInput onTagsUpdated={onTagsUpdated} disabled />
     );
     const input = getByRole('textbox');
     fireEvent.change(input, { target: { value: 'new tag' } });

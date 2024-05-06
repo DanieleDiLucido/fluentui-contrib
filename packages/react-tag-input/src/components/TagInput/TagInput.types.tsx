@@ -5,7 +5,7 @@ export type Tag = {
 
 export type TagInputState = {
   onTagsUpdated: (tags: Tag[]) => void;
-  tags: Tag[];
+  tags?: Tag[];
   disabled?: boolean;
   appearance?: 'filled' | 'brand' | 'outline';
   shape?: 'circular' | 'rounded';

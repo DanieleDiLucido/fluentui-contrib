@@ -6,6 +6,4 @@ const onTagsUpdated = (tags: Tag[]) => {
   console.log(tags);
 };
 
-export const Default = () => (
-  <TagInput onTagsUpdated={onTagsUpdated} tags={[]} />
-);
+export const Default = () => <TagInput onTagsUpdated={onTagsUpdated} />;

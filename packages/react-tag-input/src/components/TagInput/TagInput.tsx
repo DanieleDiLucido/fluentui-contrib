@@ -15,7 +15,7 @@ export const TagInput: React.FC<TagInputState> = (state: TagInputState) => {
   } = state;
   const styles = useTagInputStyles();
   const [inputValue, setInputValue] = React.useState('');
-  const [tags, setTags] = React.useState(PropTags);
+  const [tags, setTags] = React.useState(PropTags || []);
   const [isFirstRender, setIsFirstRender] = React.useState(true);
 
   const inputRef = React.useRef<HTMLInputElement>(null);
