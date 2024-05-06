@@ -10,7 +10,7 @@ export {
   AppearanceOutline,
 } from './Appearance.stories';
 export { ShapeRounded, ShapeCircular } from './Shape.stories';
-export { SizeXs, SizeMedium } from './Size.stories';
+export { SizeMedium, SizeS, SizeXs } from './Size.stories';
 export { RTL, LTR } from './Direction.stories';
 
 const meta: Meta<typeof TagInput> = {

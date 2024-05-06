@@ -13,6 +13,9 @@ const tags = [
   },
 ] as Tag[];
 
+export const SizeS = () => (
+  <TagInput onTagsUpdated={onTagsUpdated} tags={tags} size="small" />
+);
 export const SizeXs = () => (
   <TagInput onTagsUpdated={onTagsUpdated} tags={tags} size="extra-small" />
 );
