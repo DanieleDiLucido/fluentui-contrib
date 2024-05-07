@@ -1,26 +1,29 @@
 import * as React from 'react';
 import { TagInput } from '@fluentui-contrib/react-tag-input';
-import type { Tag } from '@fluentui-contrib/react-tag-input';
 
-const onTagsUpdated = (tags: Tag[]) => {
-  console.log(tags);
-};
-
-const tags = [
+const tagList = [
   {
     id: '1',
     value: 'Tag 1',
   },
-] as Tag[];
+];
 
-export const RTL = () => (
-  <div dir="rtl">
-    <TagInput onTagsUpdated={onTagsUpdated} tags={tags} />
-  </div>
-);
+export const RTL = () => {
+  const [tags, setTags] = React.useState(tagList);
 
-export const LTR = () => (
-  <div dir="ltr">
-    <TagInput onTagsUpdated={onTagsUpdated} tags={tags} />
-  </div>
-);
+  return (
+    <div dir="rtl">
+      <TagInput onTagsUpdated={setTags} tags={tags} />
+    </div>
+  );
+};
+
+export const LTR = () => {
+  const [tags, setTags] = React.useState(tagList);
+
+  return (
+    <div dir="ltr">
+      <TagInput onTagsUpdated={setTags} tags={tags} />
+    </div>
+  );
+};

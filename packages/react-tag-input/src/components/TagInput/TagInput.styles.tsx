@@ -50,7 +50,8 @@ export const useTagInputStyles = makeStyles({
   },
   tagGroup: {
     display: 'flex',
-    width: '100%',
+    minWidth: '100%',
+    maxWidth: '100%',
     flexWrap: 'wrap',
     rowGap: '6px',
     marginRight: '6px',
@@ -71,6 +72,7 @@ export const useTagInputStyles = makeStyles({
     paddingRight: '8px',
     display: 'flex',
     flexGrow: 1,
+    maxWidth: '100%',
     backgroundColor: 'transparent',
     '::after': {
       content: 'none',

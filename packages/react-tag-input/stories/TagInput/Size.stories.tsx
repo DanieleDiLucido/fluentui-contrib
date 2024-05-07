@@ -1,25 +1,26 @@
 import * as React from 'react';
 import { TagInput } from '@fluentui-contrib/react-tag-input';
-import type { Tag } from '@fluentui-contrib/react-tag-input';
 
-const onTagsUpdated = (tags: Tag[]) => {
-  console.log(tags);
-};
-
-const tags = [
+const tagList = [
   {
     id: '1',
     value: 'Tag 1',
   },
-] as Tag[];
+];
 
-export const SizeS = () => (
-  <TagInput onTagsUpdated={onTagsUpdated} tags={tags} size="small" />
-);
-export const SizeXs = () => (
-  <TagInput onTagsUpdated={onTagsUpdated} tags={tags} size="extra-small" />
-);
+export const SizeS = () => {
+  const [tags, setTags] = React.useState(tagList);
 
-export const SizeMedium = () => (
-  <TagInput onTagsUpdated={onTagsUpdated} tags={tags} size="medium" />
-);
+  return <TagInput onTagsUpdated={setTags} tags={tags} size="small" />;
+};
+export const SizeXs = () => {
+  const [tags, setTags] = React.useState(tagList);
+
+  return <TagInput onTagsUpdated={setTags} tags={tags} size="extra-small" />;
+};
+
+export const SizeMedium = () => {
+  const [tags, setTags] = React.useState(tagList);
+
+  return <TagInput onTagsUpdated={setTags} tags={tags} size="medium" />;
+};

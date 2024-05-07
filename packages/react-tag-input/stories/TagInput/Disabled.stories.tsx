@@ -1,22 +1,13 @@
 import * as React from 'react';
 import { TagInput } from '@fluentui-contrib/react-tag-input';
-import type { Tag } from '@fluentui-contrib/react-tag-input';
 
-const tags = [
-  {
-    id: '1',
-    value: 'Tag 1',
-  },
-  {
-    id: '2',
-    value: 'Tag 2',
-  },
-] as Tag[];
+export const Disabled = () => {
+  const [tags, setTags] = React.useState([
+    {
+      id: '1',
+      value: 'Tag 1',
+    },
+  ]);
 
-const onTagsUpdated = (tags: Tag[]) => {
-  console.log(tags);
+  return <TagInput disabled onTagsUpdated={setTags} tags={tags} />;
 };
-
-export const Disabled = () => (
-  <TagInput disabled onTagsUpdated={onTagsUpdated} tags={tags} />
-);

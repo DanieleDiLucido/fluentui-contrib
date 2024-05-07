@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { TagInput } from '@fluentui-contrib/react-tag-input';
-import type { Tag } from '@fluentui-contrib/react-tag-input';
+import type { TagInputEntry } from '@fluentui-contrib/react-tag-input';
 
-const onTagsUpdated = (tags: Tag[]) => {
+const onTagsUpdated = (tags: TagInputEntry[]) => {
   console.log(tags);
 };
 

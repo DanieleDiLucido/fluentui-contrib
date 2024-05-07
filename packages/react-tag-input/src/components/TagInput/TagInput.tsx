@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Input, Tag, TagGroup, mergeClasses } from '@fluentui/react-components';
+import { useControllableState } from '@fluentui/react-utilities';
 import type { TagDismissEvent } from '@fluentui/react-components';
 import { useTagInputStyles } from './TagInput.styles';
-import type { TagInputState } from './TagInput.types';
+import type { TagInputState, TagInputEntry } from './TagInput.types';
 
 export const TagInput: React.FC<TagInputState> = (state: TagInputState) => {
   const {
@@ -15,19 +16,18 @@ export const TagInput: React.FC<TagInputState> = (state: TagInputState) => {
   } = state;
   const styles = useTagInputStyles();
   const [inputValue, setInputValue] = React.useState('');
-  const [tags, setTags] = React.useState(PropTags || []);
-  const [isFirstRender, setIsFirstRender] = React.useState(true);
+
+  const [tags, setTags] = useControllableState({
+    state: PropTags,
+    initialState: [],
+  });
 
   const inputRef = React.useRef<HTMLInputElement>(null);
 
-  // Use parent callback to update the parent tags
-  React.useEffect(() => {
-    if (isFirstRender) {
-      setIsFirstRender(false);
-    } else {
-      onTagsUpdated(tags);
-    }
-  }, [tags]);
+  const updateTags = (newTags: TagInputEntry[]) => {
+    setTags(newTags);
+    onTagsUpdated(newTags);
+  };
 
   const onKeyDown = React.useCallback(
     (event: React.KeyboardEvent) => {
@@ -40,7 +40,7 @@ export const TagInput: React.FC<TagInputState> = (state: TagInputState) => {
         const trimmedInputValue = inputValue.trim();
 
         if (trimmedInputValue.length > 0) {
-          setTags([
+          updateTags([
             ...tags,
             {
               value: trimmedInputValue,
@@ -54,7 +54,7 @@ export const TagInput: React.FC<TagInputState> = (state: TagInputState) => {
       // Handle Backspace key down
       if (event.key == 'Backspace' && inputValue.length === 0) {
         event.preventDefault();
-        setTags(tags.slice(0, -1));
+        updateTags(tags.slice(0, -1));
       }
     },
     [inputValue, tags]
@@ -65,7 +65,7 @@ export const TagInput: React.FC<TagInputState> = (state: TagInputState) => {
       if (disabled) {
         return;
       }
-      setTags([...tags].filter((tag) => tag.id !== value));
+      updateTags([...tags].filter((tag) => tag.id !== value));
     },
     [tags]
   );
@@ -89,6 +89,15 @@ export const TagInput: React.FC<TagInputState> = (state: TagInputState) => {
     }
   }, []);
 
+  // Change the size of the input element based on the length of the input value
+  // This will make sure that the input element will go to the next line if the input value is too long
+  React.useEffect(() => {
+    if (inputRef.current) {
+      const size = inputValue.length > 1 ? inputValue.length : 1;
+      inputRef.current.setAttribute('size', size.toString());
+    }
+  }, [inputValue]);
+
   return (
     <div
       className={mergeClasses(styles.container, disabled && styles.disabled)}
@@ -99,6 +108,7 @@ export const TagInput: React.FC<TagInputState> = (state: TagInputState) => {
         onDismiss={removeItem}
         role="listbox"
         aria-label="Tags container"
+        aria-busy="true"
       >
         {tags.map((tag, index) => (
           <Tag

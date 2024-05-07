@@ -3,6 +3,7 @@ import { TagInput } from '@fluentui-contrib/react-tag-input';
 
 export { Default } from './Default.stories';
 export { PrefilledTags } from './PrefilledTags.stories';
+export { ControlledTags } from './ControlledTags.stories';
 export { Disabled } from './Disabled.stories';
 export {
   AppearanceBrand,
