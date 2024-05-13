@@ -128,7 +128,8 @@ export const TagInput: React.FC<TagInputState> = (state: TagInputState) => {
           </Tag>
         ))}
         <Input
-          role="textbox"
+          role="option"
+          aria-label="Tag input box"
           ref={inputRef}
           disabled={disabled}
           onKeyDown={onKeyDown}
