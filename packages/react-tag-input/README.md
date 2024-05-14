@@ -14,12 +14,12 @@ The TagInput component can accept the following parameters
 
 |name|type|default|mandatory|note|
 |:-|:---|:-|:-|:-|
-| onTagsUpdated | (tags: TagInputEntry[]) => void | - | Yes | Callback function used to update the parent of with the current tags|
+| onTagsUpdated | (tags: TagInputEntry[]) => void | - | Yes | Callback function used to update the parent with the current tags|
 |tags|TagInputEntry[]|[]|No|List Of Tags that will be rendered in the component|
 |disabled|Boolean|false|No| used to disable the component and prevent any action|
-|appearance|'filled' \| 'brand' \| 'outline'|'filled'|No| used to define the Tag appearance - check FluentUI V9 documentation for more info|
-|shape| 'circular' \| 'rounded'|'circular'|No| used to define the Tag shape - check FluentUI V9 documentation for more info|
-|size| 'small' \| 'extra-small' \| 'medium'|'medium'|No| used to define the Tag size - check FluentUI V9 documentation for more info|
+|appearance|'filled' \| 'brand' \| 'outline'|'filled'|No| used to define the Tag appearance - check [FluentUI V9 documentation](https://react.fluentui.dev/?path=/docs/components-tag-tag--default#appearance) for more info|
+|shape| 'circular' \| 'rounded'|'circular'|No| used to define the Tag shape - check [FluentUI V9 documentation](https://react.fluentui.dev/?path=/docs/components-tag-tag--default#shape) for more info]|
+|size| 'small' \| 'extra-small' \| 'medium'|'medium'|No| used to define the Tag size - check [FluentUI V9 documentation](https://react.fluentui.dev/?path=/docs/components-tag-tag--default#appearance) for more info|
 
 ## Build And Test
 
